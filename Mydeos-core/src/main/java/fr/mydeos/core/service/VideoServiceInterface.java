@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface VideoServiceInterface {
 
-    public void addVideo(Video video);
+    public void addVideo(Video video, String filename);
 
     public Video getVideoById(String id);
 

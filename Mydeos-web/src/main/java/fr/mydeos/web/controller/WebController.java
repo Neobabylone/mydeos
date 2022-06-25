@@ -25,14 +25,15 @@ public class WebController {
         String fileName = file.getOriginalFilename();
 
         try {
-            file.transferTo(new File("C:\\temp\\" + fileName));
+            file.transferTo(new File("C:\\test\\" + fileName));
         } catch (Exception e) {
             return "error";
         }
         Video video = new Video();
-        service.addVideo(video);
+        String videoURL = "..\\" + fileName;
+        service.addVideo(video, videoURL);
 
-        String url = "http://127.0.0.1/watch/" + video.getId();
+        String url = "http://127.0.0.1:8080/watch/" + video.getId();
         model.addAttribute("url", url);
         return "add";
     }
@@ -40,7 +41,8 @@ public class WebController {
 
     @RequestMapping("/watch/{id}")
     public String watchVideo(@PathVariable("id") String id, Model model){
-        model.addAttribute("video", service.getVideoById(id));
+        model.addAttribute("video", service.getVideoById(id).getFilename());
+        System.out.println(service.getVideoById(id));
         return "watch";
     }
 }

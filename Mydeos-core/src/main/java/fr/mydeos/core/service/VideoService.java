@@ -17,9 +17,9 @@ public class VideoService implements VideoServiceInterface {
     private String uniqueID;
 
     @Override
-    public void addVideo(Video video) {
+    public void addVideo(Video video, String filename) {
         video.setId(uniqueID = UUID.randomUUID().toString());
-
+        video.setFilename(filename);
         repository.add(video);
     }
 
