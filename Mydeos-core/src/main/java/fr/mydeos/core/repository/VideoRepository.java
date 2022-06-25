@@ -11,6 +11,16 @@ public class VideoRepository {
         videos.add(video);
     }
 
+    public Video getVideo(String id){
+        Video target = null;
+        for (Video video : videos){
+            if (video.getId().equals(id)){
+                target = video;
+            }
+        }
+        return target;
+    }
+
     public ArrayList<Video> getVideos() {
         return videos;
     }
