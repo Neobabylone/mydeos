@@ -4,7 +4,7 @@ import fr.mydeos.core.entity.Video;
 
 import java.util.ArrayList;
 
-public class VideoRepository {
+public class VideoRepository implements VideoRepositoryInterface {
     ArrayList<Video> videos = new ArrayList<>();
 
     public void add (Video video){
