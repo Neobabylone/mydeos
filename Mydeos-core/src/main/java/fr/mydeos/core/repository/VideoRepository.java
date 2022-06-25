@@ -10,10 +10,12 @@ import java.util.ArrayList;
 public class VideoRepository implements VideoRepositoryInterface {
     ArrayList<Video> videos = new ArrayList<>();
 
+    @Override
     public void add (Video video){
         videos.add(video);
     }
 
+    @Override
     public Video getVideo(String id){
         Video target = null;
         for (Video video : videos){
@@ -24,6 +26,7 @@ public class VideoRepository implements VideoRepositoryInterface {
         return target;
     }
 
+    @Override
     public void deleteVideo(String id){
         for (Video video : videos){
             if (video.getId().equals(id)){
@@ -32,6 +35,7 @@ public class VideoRepository implements VideoRepositoryInterface {
         }
     }
 
+    @Override
     public ArrayList<Video> getVideos() {
         return videos;
     }
