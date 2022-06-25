@@ -24,6 +24,14 @@ public class VideoRepository implements VideoRepositoryInterface {
         return target;
     }
 
+    public void deleteVideo(String id){
+        for (Video video : videos){
+            if (video.getId().equals(id)){
+                videos.remove(video);
+            }
+        }
+    }
+
     public ArrayList<Video> getVideos() {
         return videos;
     }
