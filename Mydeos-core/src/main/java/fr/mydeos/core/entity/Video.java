@@ -19,4 +19,12 @@ public class Video {
     public void setFilename(String filename) {
         this.filename = filename;
     }
+
+    @Override
+    public String toString() {
+        return "Video{" +
+                "id='" + id + '\'' +
+                ", filename='" + filename + '\'' +
+                '}';
+    }
 }
