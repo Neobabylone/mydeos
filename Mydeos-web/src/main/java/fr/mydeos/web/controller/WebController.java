@@ -7,10 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -28,7 +25,7 @@ public class WebController {
         String fileName = file.getOriginalFilename();
 
         try {
-            file.transferTo(new File("C:\\test\\" + fileName));
+            file.transferTo(new File("C:\\temp\\" + fileName));
         } catch (Exception e) {
             return "error";
         }
@@ -39,6 +36,7 @@ public class WebController {
         model.addAttribute("url", url);
         return "add";
     }
+
 
     @RequestMapping("/watch/{id}")
     public String watchVideo(@PathVariable("id") String id, Model model){
