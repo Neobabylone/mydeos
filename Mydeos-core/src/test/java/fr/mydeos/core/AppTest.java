@@ -1,8 +1,8 @@
 package fr.mydeos.core;
 
-import static org.junit.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertTrue;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 /**
  * Unit test for simple App.
