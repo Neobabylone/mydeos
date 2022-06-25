@@ -4,6 +4,8 @@ import fr.mydeos.core.entity.Video;
 import fr.mydeos.core.repository.VideoRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Service
@@ -19,6 +21,11 @@ public class VideoService implements VideoServiceInterface {
         video.setId(uniqueID = UUID.randomUUID().toString());
 
         repository.add(video);
+    }
+
+    @Override
+    public ArrayList<Video> getVideos() {
+        return repository.getVideos();
     }
 
     @Override
