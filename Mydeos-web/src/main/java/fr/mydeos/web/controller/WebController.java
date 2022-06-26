@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.UUID;
 
 @Controller
 public class WebController {
@@ -23,15 +24,21 @@ public class WebController {
 
 
         String fileName = file.getOriginalFilename();
+        String id = UUID.randomUUID().toString();
+        String videoURL = "..\\" + id + "\\" + fileName;
+        Video video = new Video();
+        service.addVideo(video, videoURL, id);
 
         try {
-            file.transferTo(new File("C:\\test\\" + fileName));
+            File directory = new File("C:\\test\\"+video.getId());
+            directory.mkdir();
+            file.transferTo(new File(directory.getAbsolutePath() + "\\" + fileName));
         } catch (Exception e) {
             return "error";
         }
-        Video video = new Video();
-        String videoURL = "..\\" + fileName;
-        service.addVideo(video, videoURL);
+
+
+
 
         String url = "http://127.0.0.1:8080/watch/" + video.getId();
         model.addAttribute("url", url);
